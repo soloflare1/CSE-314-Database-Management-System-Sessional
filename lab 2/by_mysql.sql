@@ -44,6 +44,7 @@ VALUES
 (1,101,'A'),
 (2,102,'A');
 
+SELECT * 
 FROM course;
 # +-----------+-------+--------+
 # | course_id | title | credit |
