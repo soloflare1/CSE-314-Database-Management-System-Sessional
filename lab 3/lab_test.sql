@@ -1,3 +1,12 @@
+-- 1. Create a database lab2_test. Inside it create a table books(id, title, author, year). Insert 5
+-- rows and show them.
+-- 2. Add a new column price to the books table. Update the price for two books.
+-- 3. Delete one record from the books table and show the remaining records.
+-- 4. Write a query to display all books published after 2015.
+-- 5. For your project, list the entities and design at least 2 tables with primary and foreign
+-- keys.
+
+
 MariaDB [(none)]> CREATE DATABASE lab_test;
 Query OK, 1 row affected (0.001 sec)
 
