@@ -1,3 +1,16 @@
+- **Problem Statement:**  
+- Make a university database with two tables:
+   - student → stores student info
+   - enrollments → stores course info and grades
+- Use SQL JOINs to:
+   - List students who are enrolled in any course (INNER JOIN)
+   - Show all students, including those not enrolled (LEFT JOIN)
+   - Show all enrollments, even if student info is missing (RIGHT JOIN)
+   - Simulate a full outer join using UNION
+   - Identify students enrolled in course 101
+   - Identify students not enrolled in any course
+
+
 CREATE DATABASE IF NOT EXISTS university;
 USE university;
 
