@@ -1,4 +1,4 @@
-DROP DATABASE university;
+DROP DATABASE IF EXISTS university;
 CREATE DATABASE university;
 USE university;
 
@@ -50,4 +50,49 @@ VALUES
 (3, 101, 'A', 93),
 (4, 103, 'B', 75),
 (5, 101, 'A', 89);
+
+SELECT COUNT(student_id) as total_student
+from students;
+
+SELECT dept, COUNT(student_id) as per_dept_student
+FROM students
+GROUP BY dept;
+
+SELECT course_id, AVG(score) AS avg_score
+FROM enrollments 
+GROUP BY course_id;
+
+SELECT course_id, AVG(score) AS avg_score
+FROM enrollments 
+GROUP BY course_id
+HAVING AVG(score) > 80;
+
+
+-- Find students enrolled in course 101
+SELECT name
+FROM students
+WHERE student_id IN
+(
+    SELECT student_id
+	FROM enrollments
+    WHERE course_id = 101
+);
+
+
+SELECT 
+      s.name
+FROM students s
+INNER JOIN enrollments e
+ON s.student_id = e.student_id
+WHERE course_id  = 101;
+
+-- Find students whose score is above the average score of their course
+
+SELECT s.name, e.course_id, e.score
+FROM students s
+JOIN enrollments e ON s.student_id = e.student_id
+WHERE e.score >
+      (SELECT AVG(score)
+       FROM enrollments
+       WHERE course_id = e.course_id);
 
