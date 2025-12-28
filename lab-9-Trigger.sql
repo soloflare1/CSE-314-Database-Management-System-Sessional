@@ -1,3 +1,107 @@
+DELIMITER //
+
+CREATE TRIGGER trigger_name
+AFTER INSERT ON table_name
+FOR EACH ROW
+BEGIN
+   SQL statements;
+END //
+
+DELIMITER ;
+-- ----------------------------------------------------
+CREATE TRIGGER log_student
+AFTER INSERT ON s1
+FOR EACH ROW
+BEGIN
+   INSERT INTO log_table(id, name)
+   VALUES (NEW.id, NEW.name);
+END;
+-- -------------------------------------------
+
+create table t_tb(
+   id int,
+   name varchar(100)
+);
+
+DELIMITER //
+CREATE TRIGGER t1
+AFTER INSERT ON s1
+FOR EACH ROW
+BEGIN
+   insert into t_tb(id,name)
+   values (NEW.id, NEW.name);
+END //
+DELIMITER ;
+
+insert into s1 values
+(10,'Mr. Aded',20,'CSE','ade@gmail.com','2004-11-12');
+
+select * from t_tb;
+
+-- ----------------------------------------------------
+
+
+create table t_tb2(
+   id int,
+   name varchar(100),
+   action varchar(100)
+);
+
+delimiter //
+create trigger t2
+after insert on s1
+for each row
+begin 
+  insert into t_tb2(id,name,action)
+  values (new.id,new.name,'insert');
+end //
+delimiter ;
+
+insert into s1 values
+(12,'Mr. Aded',20,'CSE','ad2e@gmail.com','2004-11-12');
+
+select * from t_tb2;
+
+-- -----------------------------------------------------
+DELIMITER //
+CREATE TRIGGER t
+AFTER DELETE ON s1
+FOR EACH ROW
+BEGIN
+  insert into t_tb (id,name)
+  values (old.id, old.name);
+END //
+DELIMITER ;
+
+DELETE 
+FROM s1
+WHERE id=1;
+
+select * from t_tb;
+-- ----------------------------------------------------
+
+use u1;
+DELIMITER //
+CREATE TRIGGER tt
+BEFORE INSERT ON s1
+for each row
+begin 
+    if new.age < 19 then
+    signal sqlstate '45000'
+    set message_text ='Age must be 18 or big';
+    end if;
+end //
+delimiter ;
+
+drop trigger tt;
+
+insert into s1 values
+(111,'Mr. A',2,'CSE','a11@gmail.com','2004-11-12');
+
+
+-- ---------------------------------------------------------
+
+
 -- drop database University;
 CREATE DATABASE University;
 USE University;
