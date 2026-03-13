@@ -111,12 +111,7 @@ MariaDB [lab_test]> SELECT * FROM student;
 |          3 | etrpth  |    70 |  3.8 | Cumilla |
 +------------+---------+-------+------+---------+
 3 rows in set (0.000 sec)
-
-MariaDB [lab_test]> SELECT * FROM student
-    -> WHERE city IN
-    -> ('Dhaka'.
-    -> ;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.' at line 3
+    
 MariaDB [lab_test]> SELECT * FROM student
     ->  WHERE city IN
     -> ('Cumilla', 'Dhaka');
@@ -129,11 +124,8 @@ MariaDB [lab_test]> SELECT * FROM student
 +------------+---------+-------+------+---------+
 3 rows in set (0.000 sec)
 
-MariaDB [lab_test]> SELECT * FROM student
-    -> WHERE city IN
-    -> ;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 2
-MariaDB [lab_test]>  SELECT * FROM student
+
+ MariaDB [lab_test]>  SELECT * FROM student
     ->  WHERE city NOT IN  ('Cumilla', 'Dhaka');
 Empty set (0.000 sec)
 
